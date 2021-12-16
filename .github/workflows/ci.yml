@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - macos
     paths-ignore:
       - '**/README.md'
       - '**/CHANGELOG.md'
@@ -14,6 +15,8 @@ on:
       - '.github/workflows/bump_deps.yml'
       - '.github/workflows/bump_homebrew.yml'
   pull_request:
+    branches:
+      - macos
 
 jobs:
   lint:
@@ -92,7 +95,7 @@ jobs:
         run: make integration-test
 
   graalvm-build:
-    runs-on: ubuntu-latest
+    runs-on: macos-11
     strategy:
       fail-fast: false
     steps:
